@@ -19,6 +19,25 @@ def character_count(filepath):
             character_dict[lower_char]=1
         else:
             character_dict[lower_char] += 1
+    return character_dict
+
+def create_book_report(filepath):
+    character_dict = character_count(filepath)
+    new_character_dict = [{"char": k, "num": v} for k, v in character_dict.items() if k.isalpha()]
+    new_character_dict.sort(key=lambda x: x["num"], reverse=True)
+    print(f"============ BOOKBOT ============")
+    print(f"Analyzing book found at {filepath}...")
+    print("----------- Word Count ----------")
+    count_words(filepath)
+    print("--------- Character Count -------")
+    for entry in new_character_dict:
+        print(f"{entry['char']}: {entry['num']}")
+    print("============= END ===============")
 
 
-    print(character_dict)
+
+
+
+
+
+
